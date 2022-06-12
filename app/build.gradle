@@ -36,6 +36,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    // new!!!
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -50,5 +55,7 @@ dependencies {
     // implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.google.android.material:material:1.2.1' // new
+    implementation "androidx.cardview:cardview:1.0.0"
+
 
 }
