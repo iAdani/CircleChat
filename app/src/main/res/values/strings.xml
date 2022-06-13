@@ -8,4 +8,8 @@
     <string name="sign_up">SIGN UP</string>
     <string name="nickname">Nickname</string>
     <string name="already_registered_click_here">Already registered? Click here to sign in</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="login">LOGIN</string>
+    <string name="server">Server</string>
 </resources>

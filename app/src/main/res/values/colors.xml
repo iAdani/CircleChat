@@ -9,4 +9,13 @@
     <color name="white">#FFFFFFFF</color>
     
     <color name="greeni">#95BD85</color>
+
+    <color name="primary">#1c2e46</color>
+    <color name="primary_drak">#142232</color>
+    <color name="primary_text">#757575</color>
+    <color name="input_background">#ececec</color>
+    <color name="error">#b00020</color>
+    <color name="received_message_background">#090d16</color>
+    <color name="icon_background">#20ffffff</color>
+
 </resources>
