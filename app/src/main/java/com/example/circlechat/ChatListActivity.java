@@ -23,6 +23,14 @@ public class ChatListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        binding.settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChatListActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

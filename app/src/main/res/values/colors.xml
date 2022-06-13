@@ -16,5 +16,6 @@
     <color name="input_background">#ececec</color>
     <color name="error">#b00020</color>
     <color name="received_message_background">#090d16</color>
+    <color name="icon_background">#20ffffff</color>
 
 </resources>
