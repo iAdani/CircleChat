@@ -18,4 +18,5 @@
     <string name="edit_server_address">Edit server address</string>
     <string name="color_mode">Light Mode</string>
     <string name="add">ADD</string>
+    <string name="messages">Messages</string>
 </resources>

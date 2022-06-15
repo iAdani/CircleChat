@@ -98,6 +98,7 @@
             android:layout_marginEnd="70dp"
             android:text="@string/login"
             android:textStyle="bold"
+            android:backgroundTint="@color/btn_color"
             />
 
         <TextView
