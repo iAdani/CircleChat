@@ -19,4 +19,43 @@
     <string name="color_mode">Light Mode</string>
     <string name="add">ADD</string>
     <string name="messages">Messages</string>
+    
+    <string-array name="nicknames">
+        <item>Snoop Dogg</item>
+        <item>50 Cent</item>
+        <item>2pac</item>
+        <item>Drake</item>
+        <item>Chris Brown</item>
+        <item>Slim Shady</item>
+        <item>Cardi B</item>
+        <item>Nicki Minaj</item>
+        <item>Ice Cube</item>
+        <item>6LACK</item>
+    </string-array>
+
+    <string-array name="lastMessage">
+        <item>hi</item>
+        <item>bye</item>
+        <item>yay</item>
+        <item>ok</item>
+        <item>damn</item>
+        <item>big nick energy</item>
+        <item>lol</item>
+        <item>idk</item>
+        <item>idc</item>
+        <item>ikr</item>
+    </string-array>
+
+    <string-array name="time">
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+        <item>11:19 PM</item>
+    </string-array>
 </resources>
