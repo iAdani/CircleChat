@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:background="@color/contact_list_color">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_contact"
@@ -29,29 +31,46 @@
         app:layout_constraintTop_toTopOf="@id/image_contact"/>
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/nickname"
+        android:layout_width="186dp"
+        android:layout_height="22dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:ellipsize="end"
+        android:fontFamily="@font/raleway_bold"
         android:maxLines="1"
-        android:textColor="@color/black"
+        android:textColor="@color/nickname_color"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/viewSupporter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image_contact"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/image_contact" />
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/lastMessage"
+        android:layout_width="213dp"
+        android:layout_height="24dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="20dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/image_contact"
-        app:layout_constraintTop_toBottomOf="@id/viewSupporter"/>
+        app:layout_constraintTop_toBottomOf="@id/viewSupporter" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintStart_toEndOf="@+id/nickname"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

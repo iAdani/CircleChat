@@ -1,0 +1,64 @@
+package com.example.circlechat;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+// For showing all the contacts list!!!
+public class CC_RecyclerViewAdapter extends RecyclerView.Adapter<CC_RecyclerViewAdapter.MyViewHolder> {
+    Context context;
+    ArrayList<ContactContainerModel> contactContainerModels;
+
+    public CC_RecyclerViewAdapter(Context context, ArrayList<ContactContainerModel> contactContainerModels){
+        this.context = context;
+        this.contactContainerModels = contactContainerModels;
+    }
+
+    @NonNull
+    @Override
+    public CC_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // this is where you inflate the layout (giving a look to our rows)
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_container_user, parent, false);
+        return new CC_RecyclerViewAdapter.MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull CC_RecyclerViewAdapter.MyViewHolder holder, int position) {
+        // assigning values to the views we created in the recycler_view_row layout file
+        // based on the position of the recycler view
+        holder.tvNickname.setText(contactContainerModels.get(position).getNickname());
+        holder.tvLastMessage.setText(contactContainerModels.get(position).getLastMessage());
+        holder.tvTime.setText(contactContainerModels.get(position).getTime());
+        holder.imageView.setImageResource(contactContainerModels.get(position).getImage());
+    }
+
+    @Override
+    public int getItemCount() {
+        // the recycler view just wants to know the number of items you want displayed
+        return contactContainerModels.size();
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+        // grabbing the views from our recycler_view_row layout file
+        // kinda like in the onCreate method
+
+        ImageView imageView;
+        TextView tvNickname, tvLastMessage, tvTime;
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.image_contact);
+            tvNickname = itemView.findViewById(R.id.nickname);
+            tvLastMessage = itemView.findViewById(R.id.lastMessage);
+            tvTime = itemView.findViewById(R.id.time);
+        }
+    }
+}
