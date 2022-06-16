@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.circlechat.api.RegisterWebService;
 import com.example.circlechat.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -15,23 +16,41 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_register);
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.signupbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!binding.username.getText().toString().isEmpty() &&
-                    !binding.nickname.getText().toString().isEmpty() &&
-                    !binding.password.getText().toString().isEmpty() &&
-                    !binding.repeatpassword.getText().toString().isEmpty()){
-                        // all fields are not empty
-                        // still need to check if they're valid
-                }
-                else{
-                    Toast.makeText(RegisterActivity.this, "All fields are required :)", Toast.LENGTH_SHORT).show();
-                }
+
+        RegisterWebService registerWebService = new RegisterWebService(this);
+
+        binding.signupbtn.setOnClickListener(v -> {
+            String username = binding.username.getText().toString();
+            String password = binding.password.getText().toString();
+            String rePassword = binding.repeatpassword.getText().toString();
+
+            // Checking if empty
+            if (username.isEmpty() || password.isEmpty() || rePassword.isEmpty() ||
+                binding.nickname.getText().toString().isEmpty()){
+                Toast.makeText(RegisterActivity.this, "All fields are required :)", Toast.LENGTH_SHORT).show();
+                return;
             }
+            // Checking username
+            if (username.length() < 3 || username.length() > 16 || !username.matches("^[A-Za-z0-9]*$")) {
+                Toast.makeText(RegisterActivity.this, "Username must contain:\n3-16 chars\nletters and numbers only", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // Checking password validations
+            if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")) {
+                String message = "Password must contain:\n8-20 chars\na Capital letter\na Small letter\na number\na special symbol";
+                Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // Checking repeated password
+            if (!password.equals(rePassword)) {
+                Toast.makeText(RegisterActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Login. Will work only if username doesn't already exist!
+            registerWebService.register(username, password);
         });
 
         binding.clickRegistered.setOnClickListener(new View.OnClickListener() {
