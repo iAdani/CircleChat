@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+<!--    <color name="primary">#292929</color>-->
+    <color name="primary">#3d4262</color>
+
+    <color name="primary_text">#7ae39a</color>
+    <color name="input_background">#3d4262</color>
+    <color name="received_message_background">#84EEA4</color>
+    <color name="icon_background">#20ffffff</color>
+    <color name="text_input">#fafafc</color>
+
+    <color name="bottom_color">#2e3152</color>
+    <color name="top_color">#2e3152</color>
+    <color name="color_mode_text">#fafafc</color>
+
+    <color name="text_typing">#fafafc</color>
+
+    <color name="btn_color">#70778d</color>
+
+    <color name="sent_color">#58bb8f</color>
+    <color name="received_color">#2d3653</color>
+
+    <color name="text_in_message">#fafafc</color>
+
+    <color name="chat_message_behind">#2e3152</color>
+
+    <color name="chat_input">#262b49</color>
+
+    <color name="contact_list_color">#2e3152</color>
+    <color name="nickname_color">#fafafc</color>
+
+</resources>
