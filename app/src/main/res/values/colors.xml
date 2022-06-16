@@ -29,4 +29,7 @@
 
     <color name="chat_input">#6F8E62</color>
 
+    <color name="contact_list_color">#ffffff</color>
+    <color name="nickname_color">#090d16</color>
+
 </resources>
