@@ -1,6 +1,14 @@
 package com.example.circlechat.entities;
 
+import androidx.annotation.NonNull;
+import androidx.room.Dao;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Contact {
+    @NonNull
+    @PrimaryKey
     private String username;
     private String server;
     private String nickname;
@@ -39,9 +47,7 @@ public class Contact {
         this.nickname = nickname;
     }
 
-    public String getLastMessage() {
-        return lastMessage;
-    }
+    public String getLastMessage() { return lastMessage; }
 
     public void setLastMessage(String lastMessage) {
         this.lastMessage = lastMessage;

@@ -10,41 +10,43 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.circlechat.entities.Contact;
+
 import java.util.ArrayList;
 
 // For showing all the contacts list!!!
-public class CC_RecyclerViewAdapter extends RecyclerView.Adapter<CC_RecyclerViewAdapter.MyViewHolder> {
+public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecyclerViewAdapter.MyViewHolder> {
     Context context;
-    ArrayList<ContactContainerModel> contactContainerModels;
+    ArrayList<Contact> contacts;
 
-    public CC_RecyclerViewAdapter(Context context, ArrayList<ContactContainerModel> contactContainerModels){
+    public ContactRecyclerViewAdapter(Context context, ArrayList<Contact> contacts){
         this.context = context;
-        this.contactContainerModels = contactContainerModels;
+        this.contacts = contacts;
     }
 
     @NonNull
     @Override
-    public CC_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ContactRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // this is where you inflate the layout (giving a look to our rows)
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_container_user, parent, false);
-        return new CC_RecyclerViewAdapter.MyViewHolder(view);
+        return new ContactRecyclerViewAdapter.MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CC_RecyclerViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ContactRecyclerViewAdapter.MyViewHolder holder, int position) {
         // assigning values to the views we created in the recycler_view_row layout file
         // based on the position of the recycler view
-        holder.tvNickname.setText(contactContainerModels.get(position).getNickname());
-        holder.tvLastMessage.setText(contactContainerModels.get(position).getLastMessage());
-        holder.tvTime.setText(contactContainerModels.get(position).getTime());
-        holder.imageView.setImageResource(contactContainerModels.get(position).getImage());
+        holder.tvNickname.setText(contacts.get(position).getNickname());
+        holder.tvLastMessage.setText(contacts.get(position).getLastMessage());
+        holder.tvTime.setText(contacts.get(position).getLastTime());
+        holder.imageView.setImageResource(R.drawable.contactcryingcat);
     }
 
     @Override
     public int getItemCount() {
         // the recycler view just wants to know the number of items you want displayed
-        return contactContainerModels.size();
+        return contacts.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
