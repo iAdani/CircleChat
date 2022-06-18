@@ -2,13 +2,18 @@ package com.example.circlechat.api;
 
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.circlechat.ChatListActivity;
 import com.example.circlechat.CircleChatApp;
 import com.example.circlechat.R;
+import com.example.circlechat.Repository;
 import com.example.circlechat.entities.Contact;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,19 +37,16 @@ public class ContactsWebService {
         contactsWebServiceAPI = retrofit.create(ContactsWebServiceAPI.class);
     }
 
-    // @TODO finish
-    public List<Contact> getContacts() {
-        List<Contact> contacts;
-        Call<List<Contact>> call = contactsWebServiceAPI.GetAll();
+    public void getContacts(MutableLiveData<List<Contact>> contacts) {
+        Call<List<Contact>> call = contactsWebServiceAPI.GetAll("Bearer " + Repository.getJwtToken());
         call.enqueue(new Callback<List<Contact>>() {
             @Override
-            public void onResponse(Call<List<Contact>> call, Response<List<Contact>> response) {
-
+            public void onResponse(@NonNull Call<List<Contact>> call,@NonNull Response<List<Contact>> response) {
+                contacts.postValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<Contact>> call, Throwable t) {
-            }
+            public void onFailure(@NonNull Call<List<Contact>> call, @NonNull Throwable t) { }
         });
     }
 }

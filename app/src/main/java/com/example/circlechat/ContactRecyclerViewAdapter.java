@@ -8,20 +8,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.circlechat.entities.Contact;
 
 import java.util.ArrayList;
+import java.util.List;
 
 // For showing all the contacts list!!!
 public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecyclerViewAdapter.MyViewHolder> {
-    Context context;
-    ArrayList<Contact> contacts;
+    private Context context;
+    private List<Contact> contacts;
+    private Repository repository;
 
-    public ContactRecyclerViewAdapter(Context context, ArrayList<Contact> contacts){
+    public ContactRecyclerViewAdapter(Context context){
         this.context = context;
-        this.contacts = contacts;
+        this.repository = new Repository();
     }
 
     @NonNull
@@ -37,9 +41,9 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
     public void onBindViewHolder(@NonNull ContactRecyclerViewAdapter.MyViewHolder holder, int position) {
         // assigning values to the views we created in the recycler_view_row layout file
         // based on the position of the recycler view
-        holder.tvNickname.setText(contacts.get(position).getNickname());
-        holder.tvLastMessage.setText(contacts.get(position).getLastMessage());
-        holder.tvTime.setText(contacts.get(position).getLastTime());
+        holder.tvNickname.setText(contacts.get(position).getName());
+        holder.tvLastMessage.setText(contacts.get(position).getLast());
+        holder.tvTime.setText(contacts.get(position).getLastdate());
         holder.imageView.setImageResource(R.drawable.contactcryingcat);
     }
 
@@ -49,10 +53,18 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
         return contacts.size();
     }
 
+    // Returns the live data so others can observe.
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         // grabbing the views from our recycler_view_row layout file
         // kinda like in the onCreate method
-
         ImageView imageView;
         TextView tvNickname, tvLastMessage, tvTime;
         public MyViewHolder(@NonNull View itemView) {

@@ -1,6 +1,8 @@
 package com.example.circlechat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -11,13 +13,16 @@ import android.view.View;
 
 import com.example.circlechat.databinding.ActivityChatListBinding;
 import com.example.circlechat.entities.Contact;
+import com.example.circlechat.viewModels.ContactsViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChatListActivity extends AppCompatActivity {
 
-    ArrayList<Contact> contacts = new ArrayList<>();
-    ActivityChatListBinding binding;
+    private ActivityChatListBinding binding;
+    private ContactRecyclerViewAdapter adapter;
+    private ContactsViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +30,20 @@ public class ChatListActivity extends AppCompatActivity {
         binding = ActivityChatListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Database db = Room.databaseBuilder(getApplicationContext(), Database.class, "DB").build();
+        viewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
+
 
         // For showing all the recycler views (contacts list)
         RecyclerView recyclerView = binding.myRecycler;
-        setUpContactContainerModels();
-        ContactRecyclerViewAdapter adapter = new ContactRecyclerViewAdapter(this, contacts);
+        adapter = new ContactRecyclerViewAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        viewModel.get().observe(this, contacts -> {
+            adapter.setContacts(contacts);
+        });
+
+
 
         binding.addNewChat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,17 +61,4 @@ public class ChatListActivity extends AppCompatActivity {
             }
         });
     }
-
-    // has to do with the recycler view (HARDCODED!)
-    private void setUpContactContainerModels() {
-//        String[] nicknames = getResources().getStringArray(R.array.nicknames);
-//        String[] lastMessages = getResources().getStringArray(R.array.lastMessage);
-//        String[] time = getResources().getStringArray(R.array.time);
-//
-//        for (int i = 0; i < nicknames.length; i++) {
-//            contacts.add(new Contact(R.drawable.contactcryingcat,
-//                    nicknames[i], lastMessages[i], time[i]));
-//        }
-    }
-
 }
