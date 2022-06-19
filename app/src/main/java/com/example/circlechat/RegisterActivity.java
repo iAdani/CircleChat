@@ -1,14 +1,14 @@
 package com.example.circlechat;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.circlechat.api.RegisterWebService;
 import com.example.circlechat.databinding.ActivityRegisterBinding;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class RegisterActivity extends AppCompatActivity {
     ActivityRegisterBinding binding;
@@ -18,6 +18,10 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(RegisterActivity.this, instanceIdResult -> {
+            String newToken = instanceIdResult.getToken();
+        });
 
         RegisterWebService registerWebService = new RegisterWebService(this);
 
@@ -38,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
             // Checking password validations
-            if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")) {
+            if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–{}:;',?/*~$^+=<>]).{8,20}$")) {
                 String message = "Password must contain:\n8-20 chars\na Capital letter\na Small letter\na number\na special symbol";
                 Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                 return;
@@ -53,12 +57,9 @@ public class RegisterActivity extends AppCompatActivity {
             registerWebService.register(username, password);
         });
 
-        binding.clickRegistered.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
+        binding.clickRegistered.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 }
