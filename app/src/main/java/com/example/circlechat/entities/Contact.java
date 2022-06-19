@@ -1,26 +1,45 @@
 package com.example.circlechat.entities;
 
+import androidx.annotation.NonNull;
+import androidx.room.Dao;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Contact {
-    private String username;
+    @NonNull
+    @PrimaryKey
+    private String id;
     private String server;
-    private String nickname;
-    private String lastMessage;
-    private String lastTime;
+    private String name;
+    private String last;
+    private String lastdate;
 
-    public Contact(String username, String server, String nickname, String lastMessage, String lastTime) {
-        this.username = username;
+    @Ignore
+    public Contact(@NonNull String id) {
+        this.id = id;
+        this.server = null;
+        this.name = null;
+        this.last = null;
+        this.lastdate = null;
+    }
+
+    public Contact(@NonNull String id, String server, String name, String last, String lastdate) {
+        this.id = id;
         this.server = server;
-        this.nickname = nickname;
-        this.lastMessage = lastMessage;
-        this.lastTime = lastTime;
+        this.name = name;
+        this.last = last;
+        this.lastdate = lastdate;
     }
 
-    public String getUsername() {
-        return username;
+    @NonNull
+    public String getId() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setId(@NonNull String id) {
+        this.id = id;
     }
 
     public String getServer() {
@@ -31,27 +50,27 @@ public class Contact {
         this.server = server;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getName() {
+        return name;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastMessage() {
-        return lastMessage;
+    public String getLast() {
+        return last;
     }
 
-    public void setLastMessage(String lastMessage) {
-        this.lastMessage = lastMessage;
+    public void setLast(String last) {
+        this.last = last;
     }
 
-    public String getLastTime() {
-        return lastTime;
+    public String getLastdate() {
+        return lastdate;
     }
 
-    public void setLastTime(String lastTime) {
-        this.lastTime = lastTime;
+    public void setLastdate(String lastdate) {
+        this.lastdate = lastdate;
     }
 }
