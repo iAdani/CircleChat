@@ -21,11 +21,9 @@ import java.util.List;
 public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecyclerViewAdapter.MyViewHolder> {
     private Context context;
     private List<Contact> contacts;
-    private Repository repository;
 
     public ContactRecyclerViewAdapter(Context context){
         this.context = context;
-        this.repository = new Repository();
     }
 
     @NonNull

@@ -26,7 +26,7 @@ public class Repository {
 
         // If DB is empty make a new list
         List<Contact> response = contactsDao.GetAll();
-        if (response.size() == 0) contactsDao.Insert(new Contact("temp"));
+        if (response.size() == 0) response = new ArrayList<>();
         contacts.setValue(response);
 
         // Fetching new data from the server
@@ -46,6 +46,9 @@ public class Repository {
 
     public MutableLiveData<List<Contact>> getContactsList() { return contacts; }
 
+    public void updateContacts() {
+        contactsDao.Update(contacts.getValue());
+    }
 //    public MutableLiveData<List<Contact>> getContactsList() {
 //        return contactsLiveData;
 //    }

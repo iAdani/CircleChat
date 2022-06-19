@@ -41,6 +41,7 @@ public class ChatListActivity extends AppCompatActivity {
 
         viewModel.get().observe(this, contacts -> {
             adapter.setContacts(contacts);
+            viewModel.updateContactsDB();
         });
 
 

@@ -22,4 +22,8 @@ public class ContactsViewModel extends ViewModel {
     public MutableLiveData<List<Contact>> get() {
         return contacts;
     }
+
+    public void updateContactsDB() {
+        repository.updateContacts();
+    }
 }

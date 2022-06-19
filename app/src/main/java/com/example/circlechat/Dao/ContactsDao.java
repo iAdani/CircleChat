@@ -26,7 +26,7 @@ public interface ContactsDao {
     void Insert(Contact... contacts);
 
     @Update
-    void Update(Contact... contacts);
+    void Update(List<Contact> contacts);
 
     @Delete
     void Delete(Contact... contacts);
