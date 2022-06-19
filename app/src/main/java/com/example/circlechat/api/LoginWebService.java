@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.example.circlechat.ChatListActivity;
 import com.example.circlechat.LoginActivity;
 import com.example.circlechat.R;
+import com.example.circlechat.Repository;
 import com.example.circlechat.entities.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -43,7 +44,9 @@ public class LoginWebService {
             @Override
             public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                 if(response.isSuccessful()) {
-                    // If 200OK move to chats
+                    // If 200OK save token and move to chats
+                    String header = response.headers().get("Set-Cookie");
+                    Repository.setJwtToken(header.substring(header.indexOf("=") + 1, header.indexOf(";")));
                     Intent intent = new Intent(loginActivity, ChatListActivity.class);
                     loginActivity.startActivity(intent);
                 } else {
