@@ -18,11 +18,14 @@
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/drawable/layout_bg.xml" value="0.2965" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/drawable/login_shape_bk.xml" value="0.203" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/activity_add_user.xml" value="0.33" />
+        <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/activity_chat.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/activity_chat_list.xml" value="0.33" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/activity_layout_login.xml" value="0.12182971014492754" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/item_container_recieved_message.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/item_container_sent_message.xml" value="0.33" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/item_container_user.xml" value="0.33" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/layout/layout_register.xml" value="0.11175288799598192" />
         <entry key="..\:/Users/chenb/StudioProjects/CircleChat/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2655" />
