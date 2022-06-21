@@ -16,8 +16,8 @@ public class Repository {
     private MutableLiveData<List<Contact>> contacts;
     private ContactsWebService contactsWebService;
 
-    public Repository() {
-        contacts = new MutableLiveData<>();
+    public Repository(MutableLiveData<List<Contact>> contacts) {
+        this.contacts = contacts;
 
         // Setting values form the local DB
         Database db = Room.databaseBuilder(CircleChatApp.getContext(), Database.class, "DB")
@@ -41,7 +41,10 @@ public class Repository {
     }
 
     public void addContact(Contact contact) {
-        contactsDao.Insert(contact);
+        contactsDao.Clear();
+        List<Contact> c = new ArrayList<>();
+        c.add(contact);
+        contactsDao.Insert(c);
     }
 
     public MutableLiveData<List<Contact>> getContactsList() { return contacts; }

@@ -32,7 +32,6 @@ public class ChatListActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
 
-
         // For showing all the recycler views (contacts list)
         RecyclerView recyclerView = binding.myRecycler;
         adapter = new ContactRecyclerViewAdapter(this);
@@ -44,22 +43,14 @@ public class ChatListActivity extends AppCompatActivity {
             viewModel.updateContactsDB();
         });
 
-
-
-        binding.addNewChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ChatListActivity.this, AddUserActivity.class);
-                startActivity(intent);
-            }
+        binding.addNewChat.setOnClickListener(v -> {
+            Intent intent = new Intent(ChatListActivity.this, AddUserActivity.class);
+            startActivity(intent);
         });
 
-        binding.settingsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ChatListActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
+        binding.settingsBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(ChatListActivity.this, SettingsActivity.class);
+            startActivity(intent);
         });
     }
 }
