@@ -63,18 +63,14 @@ public class Repository {
             }
         }
 
-        // Insert to room
-        List<Contact> temp = new ArrayList<>();
-        temp.add(contact);
-        contactsDao.Insert(temp);
-
         // Insert to server
-        contactsWebService.addContact(contact, context);
+        contactsWebService.addContact(contact, context, this);
     }
 
     public MutableLiveData<List<Contact>> getContactsList() { return contacts; }
 
     public void updateContacts() {
+        contactsDao.Clear();
         contactsDao.Insert(contacts.getValue());
     }
 

@@ -1,6 +1,7 @@
 package com.example.circlechat.api;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -52,20 +53,21 @@ public class ContactsWebService {
         });
     }
 
-    public void addContact(Contact contact, AddContactActivity context) {
-        Call<String> call = contactsWebServiceAPI.AddContact("Bearer " + Repository.getJwtToken(), contact);
-        call.enqueue(new Callback<String>() {
+    public void addContact(Contact contact, AddContactActivity context, Repository repository) {
+        Call<Contact> call = contactsWebServiceAPI.AddContact("Bearer " + Repository.getJwtToken(), contact);
+        call.enqueue(new Callback<Contact>() {
             @Override
-            public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+            public void onResponse(@NonNull Call<Contact> call, @NonNull Response<Contact> response) {
                 if(response.isSuccessful()) {
-//                    context.finish();
+                    Intent intent = new Intent(context, ChatListActivity.class);
+                    context.startActivity(intent);
                 } else {
                     Toast.makeText(context, "Username does not exist.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Contact> call, @NonNull Throwable t) {
                 Toast.makeText(context, "User does not exists", Toast.LENGTH_SHORT).show();
             }
         });

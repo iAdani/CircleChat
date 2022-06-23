@@ -15,5 +15,5 @@ public interface ContactsWebServiceAPI {
     Call<List<Contact>> GetAll(@Header("Authorization") String token);
 
     @POST("contacts")
-    Call<String> AddContact(@Header("Authorization") String token, @Body Contact contact);
+    Call<Contact> AddContact(@Header("Authorization") String token, @Body Contact contact);
 }
