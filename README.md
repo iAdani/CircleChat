@@ -18,8 +18,7 @@ Now use these commands
 * Also, you can delete the repository/migrations folder, and run these commands on the NuGet CLI:<br/>
 `add-migration init`<br/>
 `database-update`
-* start server: `./CircleChat`<br/>
-`dotnet run -- NOT DONEEEEEEE
+* now you can start the server.
 
 ## Run Client 👨🏽‍💻
 after starting the server, you can now run the android studio code 😊
