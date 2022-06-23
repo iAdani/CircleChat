@@ -38,19 +38,22 @@ public class MessagesWebService {
     }
 
     public void GetContactMessages(Contact contact, ChatActivity context) {
-        Call<List<Message>> call = messagesWebServiceAPI.GetAll("Bearer " + Repository.getJwtToken(), contact.getId());
-        call.enqueue(new Callback<List<Message>>() {
-            @Override
-            public void onResponse(@NonNull Call<List<Message>> call, @NonNull Response<List<Message>> response) {
-                if(response.isSuccessful()) {
-                    context.setMessages(response.body());
-                } else {
-                    Toast.makeText(CircleChatApp.getContext(), "Error getting messages", Toast.LENGTH_SHORT).show();
+        if (contact != null) {
+            Call<List<Message>> call = messagesWebServiceAPI.GetAll("Bearer " + Repository.getJwtToken(), contact.getId());
+            call.enqueue(new Callback<List<Message>>() {
+                @Override
+                public void onResponse(@NonNull Call<List<Message>> call, @NonNull Response<List<Message>> response) {
+                    if (response.isSuccessful()) {
+                        context.setMessages(response.body());
+                    } else {
+                        Toast.makeText(CircleChatApp.getContext(), "Error getting messages", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(@NonNull Call<List<Message>> call, @NonNull Throwable t) { }
-        });
+                @Override
+                public void onFailure(@NonNull Call<List<Message>> call, @NonNull Throwable t) {
+                }
+            });
+        }
     }
 }

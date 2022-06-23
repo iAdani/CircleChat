@@ -1,6 +1,8 @@
 package com.example.circlechat;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +21,7 @@ import java.util.List;
 
 // For showing all the contacts list!!!
 public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecyclerViewAdapter.MyViewHolder> {
-    private Context context;
+    private final Context context;
     private List<Contact> contacts;
 
     public ContactRecyclerViewAdapter(Context context){
@@ -43,19 +45,23 @@ public class ContactRecyclerViewAdapter extends RecyclerView.Adapter<ContactRecy
         holder.tvLastMessage.setText(contacts.get(position).getLast());
         holder.tvTime.setText(contacts.get(position).getLastdate());
         holder.imageView.setImageResource(R.drawable.contactcryingcat);
+
+        holder.itemView.setOnClickListener(v -> {
+            // when the user clicks on a row, we want to go to the chat activity
+            // and pass the contact to it
+            ChatActivity.setCurrentContact(contacts.get(position));
+            Intent intent = new Intent(context, ChatActivity.class);
+            context.startActivity(intent);
+        });
     }
 
-    @Override
+        @Override
     public int getItemCount() {
         // the recycler view just wants to know the number of items you want displayed
         return contacts.size();
     }
 
-    // Returns the live data so others can observe.
-    public List<Contact> getContacts() {
-        return contacts;
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
         notifyDataSetChanged();

@@ -27,6 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
     
     <TextView
+        android:id="@+id/textViewTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -41,7 +42,7 @@
         app:layout_constraintEnd_toStartOf="@id/backIcon"
         app:layout_constraintStart_toEndOf="@id/profile_image"
         app:layout_constraintTop_toTopOf="@id/profile_image"
-        android:text="Ben Gvir"/>
+        />
 
     <View
         android:id="@+id/viewSupporter"
