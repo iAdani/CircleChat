@@ -2,6 +2,8 @@ package com.example.circlechat.api;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -9,6 +11,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.circlechat.ChatActivity;
 import com.example.circlechat.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -33,6 +36,16 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
             // display notification
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
             notificationManager.notify(R.string.incoming_msg_channel_id, builder.build());
+
+            // gets sender's username
+            String sender = remoteMessage.getData().get("sender");
+            // create intent to open chat activity
+            Intent intent = new Intent(this, ChatActivity.class);
+            intent.putExtra("sender", sender);
+            // create pending intent
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+            // set pending intent to notification
+            builder.setContentIntent(pendingIntent);
         }
     }
 
