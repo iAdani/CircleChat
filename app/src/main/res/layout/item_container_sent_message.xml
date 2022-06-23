@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="18dp"
+    android:padding="10dp"
     android:background="@color/chat_message_behind">
 
     <TextView
@@ -11,12 +11,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/backgroung_sent_message"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/text_in_message"
         android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8"
-        android:text="WHATTT"/>
+        app:layout_constraintWidth_percent="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
