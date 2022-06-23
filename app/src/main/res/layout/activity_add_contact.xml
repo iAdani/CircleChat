@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddUserActivity"
+    tools:context=".AddContactActivity"
     android:background="@color/primary">
     
     <androidx.appcompat.widget.AppCompatImageView
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_contact"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/backIcon"
@@ -59,7 +59,7 @@
                 android:src="@drawable/ic_round_person_add_24"/>
 
        <EditText
-        android:id="@+id/username"
+        android:id="@+id/addContact_username"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -79,7 +79,7 @@
         />
 
         <EditText
-            android:id="@+id/nickname"
+            android:id="@+id/addContact_nickname"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -88,7 +88,7 @@
             android:background="@drawable/background_input"
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:drawablePadding="10dp"
-            android:hint="Nickname"
+            android:hint="@string/addContact_nickname"
             android:padding="20dp"
             android:textColor="@color/text_typing"
             android:textColorHint="@color/text_input"
@@ -99,7 +99,7 @@
             />
 
             <EditText
-                android:id="@+id/TextServer"
+                android:id="@+id/addContact_server"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -120,12 +120,13 @@
                 />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addContact_addButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="70dp"
-                android:text="ADD"
+                android:text="@string/addContact_add"
                 android:backgroundTint="@color/btn_color"
                 />
         </LinearLayout>
