@@ -21,6 +21,20 @@ Now use these commands
 * now you can start the server.
 
 ## Run Client 👨🏽‍💻
-after starting the server, you can now run the android studio code 😊
+After starting the server, you can now run the android studio code 😊
+
+## How to test Firebase 🔥⚾\{ball}
+Sending messages from app doesn't work.
+To test Firebase notifications: 
+1) log into the user from whom you wish to send the message from the swagger's LoginRegister:POST:/api/login function.
+2) change the message from swagger's Messages:POST:/api/contacts/{id}/messages function as follows:
+   i. id (above request body) should be the recipient's username.
+  ii. id (inside request body) should be a new *unique* id for the message. duplicates will not be sent.
+ iii. belongs is the username of the sender, and contactUsername is the name of the recipient.
+  iv. content is your message's content.
+   v. leave created and sent unchanged.
+3) press execute.
+
+
 
 ** Also to mention that we were allowed to pass on doing the landscape part.
