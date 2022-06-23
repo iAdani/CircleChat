@@ -38,7 +38,7 @@ public class ChatListActivity extends AppCompatActivity {
         });
 
         binding.addNewChat.setOnClickListener(v -> {
-            Intent intent = new Intent(ChatListActivity.this, AddUserActivity.class);
+            Intent intent = new Intent(ChatListActivity.this, AddContactActivity.class);
             startActivity(intent);
         });
 
