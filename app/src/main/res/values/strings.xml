@@ -19,7 +19,9 @@
     <string name="color_mode">Light Mode</string>
     <string name="add">ADD</string>
     <string name="messages">Messages</string>
-    
+    <string name="addContact_add">ADD</string>
+    <string name="addContact_nickname">Nickname</string>
+
     <string-array name="nicknames">
         <item>Snoop Dogg</item>
         <item>50 Cent</item>
