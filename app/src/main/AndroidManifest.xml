@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <service
-            android:name=".FirebaseNotificationService"
+            android:name=".api.FirebaseNotificationService"
             android:enabled="true"
             android:exported="true">
                 <intent-filter>

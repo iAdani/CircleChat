@@ -1,10 +1,8 @@
 package com.example.circlechat;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.circlechat.databinding.ActivityAddUserBinding;
 
@@ -16,12 +14,6 @@ public class AddUserActivity extends AppCompatActivity {
         binding = ActivityAddUserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.backIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AddUserActivity.this, ChatListActivity.class);
-                startActivity(intent);
-            }
-        });
+        binding.backIcon.setOnClickListener(v -> finish());
     }
 }

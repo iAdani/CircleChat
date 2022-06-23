@@ -17,4 +17,14 @@
     <string name="edit_server_address">Edit server address</string>
     <string name="color_mode">Dark Mode</string>
     <string name="add">ADD</string>
+    <string name="regex_AZaz09">^[A-Za-z0-9]*$</string>
+    <string name="password_regex_mismatch">Password must contain:\n8-20 chars\na Capital letter\na Small letter\na number\na special symbol</string>
+    <string name="password_mismatch_err">Passwords do not match!</string>
+    <string name="password_regex_criteria"><![CDATA[^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–{}:;\',?/*~$^+=<>]).{8,20}$]]></string>
+    <string name="all_fields_required">All fields are required :)</string>
+    <string name="user_exists_err">Sorry, this username already exists.</string>
+    <string name="server_not_found_err">Cannot find the server.</string>
+    <string name="fb_get_token_err">Error getting token</string>
+    <string name="incoming_msg_channel_id">1</string>
+    <string name="night_mode">night_mode</string>
 </resources>

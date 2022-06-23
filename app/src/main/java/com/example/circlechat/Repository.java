@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Repository {
     private static String jwtToken = null;
+    private static String firebaseToken = null;
     private ContactsDao contactsDao;
     private MutableLiveData<List<Contact>> contacts;
     private ContactsWebService contactsWebService;
@@ -34,10 +35,17 @@ public class Repository {
         contactsWebService.getContacts(contacts);
     }
 
+
     public static String getJwtToken() { return jwtToken; }
 
     public static void setJwtToken(String jwtToken) {
         Repository.jwtToken = jwtToken;
+    }
+
+    public static String getFirebaseToken() { return firebaseToken; }
+
+    public static void setFirebaseToken(String firebaseToken) {
+        Repository.firebaseToken = firebaseToken;
     }
 
     public void addContact(Contact contact) {
