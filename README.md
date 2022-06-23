@@ -23,6 +23,12 @@ Now use these commands
 ## Run Client 👨🏽‍💻
 After starting the server, you can now run the android studio code 😊
 
+         #### IMPORTANT ###
+         the working android studio version is on branch yotamaster and *not* master as written in the moodle submit.
+         please make sure all tests are conducted on yotamaster.
+         thank you.
+         sorry.
+
 ## How to test Firebase 🔥⚾\{ball}
 Sending messages from app doesn't work.
 To test Firebase notifications: 
