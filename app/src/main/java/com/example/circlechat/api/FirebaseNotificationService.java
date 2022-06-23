@@ -28,15 +28,6 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
         createNotificationChannel();
         // create notification
         if (remoteMessage.getNotification() != null) {
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1")
-                    .setSmallIcon(R.drawable.ic_launcher_foreground)
-                    .setContentTitle(remoteMessage.getNotification().getTitle())
-                    .setContentText(remoteMessage.getNotification().getBody())
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-            // display notification
-            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-            notificationManager.notify(R.string.incoming_msg_channel_id, builder.build());
-
             // gets sender's username
             String sender = remoteMessage.getData().get("sender");
             // create intent to open chat activity
@@ -44,8 +35,15 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
             intent.putExtra("sender", sender);
             // create pending intent
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
-            // set pending intent to notification
-            builder.setContentIntent(pendingIntent);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1")
+                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+                    .setContentTitle(remoteMessage.getNotification().getTitle())
+                    .setContentText(remoteMessage.getNotification().getBody())
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setContentIntent(pendingIntent);
+            // display notification
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+            notificationManager.notify(R.string.incoming_msg_channel_id, builder.build());
         }
     }
 
