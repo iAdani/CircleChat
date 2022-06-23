@@ -19,7 +19,8 @@ public class ContactsViewModel extends ViewModel {
         contacts = repository.getContactsList();
     }
 
-    public MutableLiveData<List<Contact>> get() {
+    public MutableLiveData<List<Contact>>
+    get() {
         return contacts;
     }
 
