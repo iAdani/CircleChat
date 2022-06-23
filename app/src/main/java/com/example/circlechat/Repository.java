@@ -15,6 +15,7 @@ import java.util.List;
 
 public class Repository {
     private static String jwtToken = null;
+    private static String firebaseToken = null;
     private static Database database = null;
     private ContactsDao contactsDao;
     private MutableLiveData<List<Contact>> contacts;
@@ -54,7 +55,7 @@ public class Repository {
 
     public void addContact(Contact contact, AddContactActivity context) {
         List<Contact> currentContacts = contactsDao.GetAll();
-        for(Contact c : currentContacts) {
+        for (Contact c : currentContacts) {
             if (c.getId().equals(contact.getId())) {
                 Toast.makeText(context,
                         c.getId() + " Is already a contact!", Toast.LENGTH_SHORT).show();
@@ -65,6 +66,12 @@ public class Repository {
 
         // Insert to server
         contactsWebService.addContact(contact, context, this);
+    }
+
+    public static String getFirebaseToken() { return firebaseToken; }
+
+    public static void setFirebaseToken(String firebaseToken) {
+        Repository.firebaseToken = firebaseToken;
     }
 
     public MutableLiveData<List<Contact>> getContactsList() { return contacts; }

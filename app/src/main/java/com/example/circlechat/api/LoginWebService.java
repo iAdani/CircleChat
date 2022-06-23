@@ -38,14 +38,20 @@ public class LoginWebService {
     }
 
     public void login(String username, String password) {
-        // Creating a login call to the server
-        Call<String> call = loginWebServiceAPI.Login(new User(username, password));
+        // Create a user object
+        User user = new User(username, password);
+        // Get firebase token
+        String token = Repository.getFirebaseToken();
+        // Creating a login call to the server!
+        Call<String> call = loginWebServiceAPI.Login(token, user);
         loginActivity.runOnUiThread(() -> call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                 if(response.isSuccessful()) {
+
                     // If 200OK save token and move to chats
                     String header = response.headers().get("Set-Cookie");
+                    assert header != null;
                     Repository.setJwtToken(header.substring(header.indexOf("=") + 1, header.indexOf(";")));
                     Intent intent = new Intent(loginActivity, ChatListActivity.class);
                     loginActivity.startActivity(intent);
@@ -56,7 +62,7 @@ public class LoginWebService {
 
             @Override
             public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
-                Toast.makeText(loginActivity, "Cannot find the server.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(loginActivity, R.string.server_not_found_err, Toast.LENGTH_SHORT).show();
             }
         }));
     }

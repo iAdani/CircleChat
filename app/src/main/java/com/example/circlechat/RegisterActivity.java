@@ -1,14 +1,14 @@
 package com.example.circlechat;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.circlechat.api.RegisterWebService;
 import com.example.circlechat.databinding.ActivityRegisterBinding;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class RegisterActivity extends AppCompatActivity {
     ActivityRegisterBinding binding;
@@ -19,6 +19,14 @@ public class RegisterActivity extends AppCompatActivity {
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // get firebase token
+        if (Repository.getFirebaseToken() == null) {
+            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, instanceIdResult -> {
+                String token = instanceIdResult.getToken();
+                Repository.setFirebaseToken(token);
+            });
+        }
+
         RegisterWebService registerWebService = new RegisterWebService(this);
 
         binding.signupbtn.setOnClickListener(v -> {
@@ -28,24 +36,24 @@ public class RegisterActivity extends AppCompatActivity {
 
             // Checking if empty
             if (username.isEmpty() || password.isEmpty() || rePassword.isEmpty() ||
-                binding.nickname.getText().toString().isEmpty()){
-                Toast.makeText(RegisterActivity.this, "All fields are required :)", Toast.LENGTH_SHORT).show();
+                    binding.nickname.getText().toString().isEmpty()) {
+                Toast.makeText(RegisterActivity.this, R.string.all_fields_required, Toast.LENGTH_SHORT).show();
                 return;
             }
             // Checking username
-            if (username.length() < 3 || username.length() > 16 || !username.matches("^[A-Za-z0-9]*$")) {
-                Toast.makeText(RegisterActivity.this, "Username must contain:\n3-16 chars\nletters and numbers only", Toast.LENGTH_SHORT).show();
+            if (username.length() < 3 || username.length() > 16 || !username.matches(getString(R.string.regex_AZaz09))) {
+                Toast.makeText(RegisterActivity.this, R.string.username_regex_mismatch, Toast.LENGTH_SHORT).show();
                 return;
             }
             // Checking password validations
-            if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")) {
-                String message = "Password must contain:\n8-20 chars\na Capital letter\na Small letter\na number\na special symbol";
+            if (!password.matches(getString(R.string.password_regex_criteria))) {
+                String message = getString(R.string.password_regex_mismatch);
                 Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                 return;
             }
             // Checking repeated password
             if (!password.equals(rePassword)) {
-                Toast.makeText(RegisterActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, R.string.password_mismatch_err, Toast.LENGTH_SHORT).show();
                 return;
             }
 
