@@ -13,7 +13,7 @@ Now use these commands
 `git clone https://github.com/iAdani/CircleChat.git`<br/>
 `cd CircleChat`
 
-## Run Server👨🏽‍💻
+## Run Server 👨🏽‍💻
 * Go to Context.cs and change the username and password to those that you've chosen when mariaDB was installed.
 * Also, you can delete the repository/migrations folder, and run these commands on the NuGet CLI:<br/>
 `add-migration init`<br/>
@@ -21,7 +21,7 @@ Now use these commands
 * start server: `./CircleChat`<br/>
 `dotnet run -- NOT DONEEEEEEE
 
-## Run Client
+## Run Client 👨🏽‍💻
 after starting the server, you can now run the android studio code 😊
 
 ** Also to mention that we were allowed to pass on doing the landscape part.
