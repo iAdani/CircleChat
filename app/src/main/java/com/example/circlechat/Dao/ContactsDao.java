@@ -23,11 +23,14 @@ public interface ContactsDao {
     List<Contact> Find(String username);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void Insert(Contact... contacts);
+    void Insert(List<Contact> contacts);
 
     @Update
     void Update(List<Contact> contacts);
 
     @Delete
     void Delete(Contact... contacts);
+
+    @Query("DELETE FROM contact")
+    void Clear();
 }

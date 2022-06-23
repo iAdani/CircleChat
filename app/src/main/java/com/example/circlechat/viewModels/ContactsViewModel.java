@@ -15,11 +15,12 @@ public class ContactsViewModel extends ViewModel {
 
     public ContactsViewModel() {
         contacts = new MutableLiveData<>();
-        repository = new Repository();
+        repository = new Repository(contacts);
         contacts = repository.getContactsList();
     }
 
-    public MutableLiveData<List<Contact>> get() {
+    public MutableLiveData<List<Contact>>
+    get() {
         return contacts;
     }
 
