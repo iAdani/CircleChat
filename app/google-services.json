@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "543744576149",
+    "project_id": "ap2-ex3",
+    "storage_bucket": "ap2-ex3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543744576149:android:a8e5ff283554c985cce99c",
+        "android_client_info": {
+          "package_name": "com.example.circlechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543744576149-nts6h6ea7rvhsfremqi97rvd3h31fttg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuivJRktOqkpIKBQGoYY8kosSUS-Q96IY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543744576149-nts6h6ea7rvhsfremqi97rvd3h31fttg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
